@@ -1,5 +1,5 @@
 # blooket-hack
-A full UI made with Emk7 and therealgliz
+A full UI made with Emk7 and inspired by therealgliz
 
 
 Go to this page to learn how: https://docs.google.com/document/d/1fj_r06niiCG6rqDxOo9QsdX_rSFw_qpqiKgw1NWGhY0/edit
