@@ -6,3 +6,5 @@ Go to this page to learn how: https://docs.google.com/document/d/1fj_r06niiCG6rq
 
 
 As a heads up: if you happen to be in my school and use this code in a class with me, I have private repos that will make the game unplayable. Don't make me use these.
+
+Please leave a star too!
