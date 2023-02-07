@@ -1,4 +1,4 @@
-# blooket-hack
+# blooket-hack-real
 A full UI made with Emk7 and inspired by therealgliz
 
 
