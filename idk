@@ -1,0 +1,278 @@
+javascript:(function() {
+    (() => {
+        let n = document.createElement('iframe');
+        document.body.append(n);
+        window.alert = n.contentWindow.alert.bind(window);
+        window.prompt = n.contentWindow.prompt.bind(window);
+        window.confirm = n.contentWindow.confirm.bind(window);
+        n.remove();
+    })();
+
+    (() => {
+        let style = document.createElement('style');
+        style.innerHTML = (`
+            details > summary {
+                cursor: pointer;
+                transition: 0.15s;
+                list-style: none;
+            }
+            details > summary:hover {
+                color: hsl(0, 0%, 50%);
+            }
+            details > summary::-webkit-details-marker {
+                display: none;
+            }
+            details summary ~ * {
+                animation: sweep .5s ease-in-out;
+            }
+
+            @keyframes sweep {
+                0%    {opacity: 0; transform: translateY(-10px)}
+                100%  {opacity: 1; transform: translateY(0)}
+            }
+
+            .cheat {
+                border: none;
+                background: hsl(0, 0%, 20%);
+                padding: 5px;
+                margin: 3px;
+                width: 60%;
+                color: hsl(0, 0%, 100%);
+                transition: 0.2s;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .cheat:hover {
+                background: hsl(0, 0%, 30%);
+            }
+        `);
+
+        const GUI = document.createElement('div');
+        GUI.appendChild(style);
+        GUI.style.width = '400px';
+        //GUI.style.height = '500px';
+        GUI.style.background = 'hsl(0, 0%, 10%)';
+        GUI.style.borderRadius = '10px';
+        GUI.style.position = 'absolute';
+        GUI.style.textAlign = 'center';
+        GUI.style.fontFamily = 'Nunito';
+        GUI.style.color = 'white';
+        GUI.style.overflow = 'hidden';
+        GUI.style.top = '50px';
+        GUI.style.left = '50px';
+
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        GUI.onmousedown = ((e = window.event) => {
+            e.preventDefault();
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = (() => {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            });
+            document.onmousemove = ((e) => {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                GUI.style.top = (GUI.offsetTop - pos2) + "px";
+                GUI.style.left = (GUI.offsetLeft - pos1) + "px";
+            });
+        });
+
+        const cheatDiv = document.createElement('div');
+        const cheatList = document.createElement('ul');
+        cheatDiv.appendChild(cheatList);
+        cheatDiv.style.textAlign = 'left';
+        cheatDiv.style.overflowY = 'scroll';
+        cheatDiv.style.height = '90%';
+        cheatDiv.style.marginTop = '10px';
+
+        const cheats = [            {                name: 'Infinite Health',                code: 'player.health = 9999;'            },            {                name: 'Infinite Ammo',                code: 'player.ammo = 9999;'            },            {                name: 'Unlock All Levels',                code: 'game.levels
+        
+        fetch("https://api.blooket.com/api/users?name=" + prompt("Enter a username to target:")).
+then(x => x.json()).
+then(async x => {
+    let e = await getValues(),
+        t = x.userId || x.user.userId;
+    if (!t) return alert("Could not find user! Try again later.");
+    fetch("https://api.blooket.com/api/users/" + t + "/report", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json",
+            "referer": "https://www.blooket.com/",
+            "user-agent": e.userAgent,
+            "authorization": e.authorization
+        },
+        body: JSON.stringify({
+            reason: 1,
+            note: ""
+        })
+    }).then(() => alert("Reported user!")).catch(() => alert("There was an error reporting the user!"))
+}).
+catch(() => alert("There was an error getting username!"));
+
+// original code
+function calculateTotal(items, options) {
+  let total = 0;
+  items.forEach(item => {
+    total += item.price * item.quantity;
+  });
+  if (options.discountCode) {
+    total *= 1 - options.discountCode.discount;
+  }
+  total += total * options.tax;
+  return total.toFixed(2);
+}
+
+// simplified code
+function calculateTotal(items, options) {
+  let total = 0;
+  for (let item of items) {
+    total += item.price * item.quantity;
+  }
+  if (options.discountCode) {
+    total *= 1 - options.discountCode.discount;
+  }
+  total += total * options.tax;
+  return total.toFixed(2);
+}
+
+let global = true;
+global.style.paddingBottom = '10px';
+body.appendChild(global);
+
+let cheatDiv = document.createElement('div');
+body.appendChild(cheatDiv);
+
+loop = setInterval(() => {
+    if (curPage != getSite()) {
+        curPage = getSite();
+        curPageEl.innerText = getSite(true) ? `Current gamemode: ${getSite(true)}` : 'No game detected';
+        Array.from(cheatDiv.children).forEach(x => x.remove());
+        if (curPage && cheats[curPage]) Object.keys(cheats[curPage]).forEach(cheat => {
+            let button = createButton(cheat);
+            button.onclick = cheats[curPage][cheat];
+            cheatDiv.appendChild(button);
+            cheatDiv.appendChild(document.createElement('br'));
+        })
+    }
+    
+let activeCheatsText = (`Auto Answer: ${autoAnswer ? 'Enabled' : 'Disabled'}
+Highlight Answers: ${highlightAnswers ? 'Enabled' : 'Disabled'}
+${curPage == 'kingdom' ? `\nChoice ESP: ${choiceESP ? 'Enabled' : 'Disabled'}` : curPage == 'crypto' ? `\nAuto Hack: ${autoPassword ? 'Enabled' : 'Disabled'}` : curPage == 'gold' ? `\nChest ESP: ${chestESP ? 'Enabled' : 'Disabled'}` : ''}`);
+activeCheats.innerText != activeCheatsText && (activeCheats.innerText = activeCheatsText);
+
+if (autoAnswer) {
+    try {
+        Array.from(document.body.querySelectorAll('div[class*="answerText"]')).filter(t => t.firstChild.innerHTML == reactHandler().memoizedState.question.correctAnswers[0])[0].click();
+    } catch {
+        try {
+            Array.from(document.body.querySelectorAll('div[class*="answerText"]')).filter(t => t.firstChild.innerHTML == reactHandler().memoizedProps.client.question.correctAnswers[0])[0].click();
+        } catch { };
+    };
+};
+
+
+if (highlightAnswers) {
+    try {
+        Array.from(document.querySelector('div[class*="answersHolder"]').children).forEach(x => {
+            if (reactHandler().memoizedState.question.correctAnswers.includes(x.innerText) || reactHandler().memoizedProps.client.question.correctAnswers.includes(x.innerText)) x.firstChild.style = 'background-color: rgb(0, 207, 119);';
+            else x.firstChild.style = 'background-color: rgb;
+            
+ // Remove existing choiceESP elements
+Array.from(document.getElementsByClassName('choiceESP')).forEach(x => x.remove())
+if (choiceESP) {
+  try {
+    // Find the relevant elements on the page
+    let elements = {
+      materials: Array.from(document.querySelectorAll('div')).find(x => Array.from(x.children).find(e => e.className.includes('tree'))),
+      people: Array.from(document.querySelectorAll('div')).find(x => Array.from(x.children).find(e => e.className.includes('users') && !e.className.includes('count'))),
+      weapons: Array.from(document.querySelectorAll('div')).find(x => Array.from(x.children).find(e => e.className.includes('sword')))
+    }
+    // Create and append the choiceESP elements
+    let choiceElems = Object.keys(elements).map(k => {
+      let div = document.createElement('div')
+      div.className = 'choiceESP'
+      div.style = 'position: absolute; z-index: 10000; pointer-events: none;'
+      div.innerText = k
+      div.style.top = `${elements[k].getBoundingClientRect().top}px`
+      div.style.left = `${elements[k].getBoundingClientRect().left}px`
+      return div
+    })
+    choiceElems.forEach(x => document.body.appendChild(x))
+  } catch {}
+}
+
+if (curPage == 'crypto') {
+  if (autoPassword) {
+    try {
+      // Get the relevant elements on the page
+      let inputs = Array.from(document.querySelectorAll('input'))
+      let submitButton = document.querySelector('button')
+      // Fill in the password inputs with the correct values and submit the form
+      inputs[0].value = decryptCaesar(encryptedStrings[0], 25)
+      inputs[1].value = decryptVigenere(encryptedStrings[1], 'LEMON')
+      submitButton.click()
+    } catch {}
+  }
+}
+
+if (curPage == 'gold') {
+  if (chestESP) {
+    try {
+      // Get the relevant elements on the page
+      let chests = Array.from(document.querySelectorAll('div')).filter(x => x.style.backgroundImage.includes('chest'))
+      // Create and append the chestESP elements
+      let chestElems = chests.map(x => {
+        let div = document.createElement('div')
+        div.className = 'chestESP'
+        div.style = 'position: absolute; z-index: 10000; pointer-events: none; background-image: url(https://image.flaticon.com/icons/png/512/3819/3819477.png); background-size: contain;'
+        div.style.top = `${x.getBoundingClientRect().top}px`
+        div.style.left = `${x.getBoundingClientRect().left}px`
+        div.style.width = `${x.getBoundingClientRect().width}px`
+        div.style.height = `${x.getBoundingClientRect().height}px`
+        return div
+      })
+      chestElems.forEach(x => document.body.appendChild(x))
+    } catch {}
+  }
+}
+}, 1000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
